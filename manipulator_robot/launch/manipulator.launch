@@ -1,0 +1,15 @@
+<launch>
+    <!-- Load the Anthropomorthic Manipulator URDF model into the parameter server -->
+    <param name="robot_description" textfile="$(find manipulator_robot)/urdf/robot.urdf"/>
+    <!--Start Gazebo with an empty world -->
+    
+    <include file="$(find gazebo_ros)/launch/empty_world.launch"/>
+    <!--Spawn TortoiseBot in gazebo, taking the description from the parameter server -->
+    <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model" args="-param robot_description -urdf -model manipulator_robot"/>
+
+    <rosparam command="load" file="$(find manipulator_robot)/controller/controllers.yaml"/>
+    <node name="right_controller_spawner" pkg="controller_manager" type="spawner"  args="right_arm_controller"/>
+    <node name="left_controller_spawner" pkg="controller_manager" type="spawner"  args="left_arm_controller"/>
+    <node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher"/>
+
+</launch>

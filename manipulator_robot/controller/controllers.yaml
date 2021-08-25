@@ -1,0 +1,22 @@
+/right_arm_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - right_clavicle_joint
+    - right_shoulder_joint
+    - right_elbow
+    - right_grip_x_joint
+    - right_grip_y_joint
+    - right_grip_z_joint
+    - right_effector
+/left_arm_controller:
+  type: "position_controllers/JointTrajectoryController"
+  joints:
+    - left_clavicle_joint
+    - left_shoulder_joint
+    - left_elbow
+    - left_grip_x_joint
+    - left_grip_y_joint
+    - left_grip_z_joint
+    - left_effector
+
+
